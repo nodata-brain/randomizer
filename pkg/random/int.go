@@ -1,8 +1,15 @@
 package random
 
-import ()
+import (
+	"math/rand"
+	"time"
+)
 
-func (m mizer) InitInt() error {
-	m.err = m.random()
-	return nil
+func (m *mizer) InitInt() {
+	m.param = randInt(m.r)
+}
+
+func randInt(n int) int {
+	rand.Seed(time.Now().UnixNano())
+	return rand.Intn(n)
 }

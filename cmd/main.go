@@ -8,6 +8,6 @@ import (
 )
 
 func main() {
-	s := random.Randomizer("int", nil, nil)
+	s := random.Randomizer("int", 0)
 	fmt.Println(s)
 }
