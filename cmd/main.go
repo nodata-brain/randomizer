@@ -1,13 +1,17 @@
 package main
 
 import (
-	//	"flag"
+	"flag"
 	"fmt"
 
 	"randomizer/pkg/random"
 )
 
 func main() {
-	s := random.Randomizer("int", 0)
+	str := flag.String("m", "", "mode randomizer /n int = 0~n /n str hoge")
+	n := flag.Int("n", 0, "set range /n int n /n str word")
+	flag.Parse()
+
+	s := random.Randomizer(*str, *n)
 	fmt.Println(s)
 }

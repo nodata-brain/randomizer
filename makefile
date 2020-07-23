@@ -6,10 +6,12 @@ endif
 
 name ?= $(basename pwd)
 mod_name ?= $(basename pwd)
+m ?= int
+n ?= 0
 
 .PHONY: run
 run:
-	go run ./cmd/main.go
+	go run ./cmd/main.go -m=${m} -n=${n}
 
 build:
 	go build -o ${name}$(EXE_EXT) ./cmd/main.go

@@ -19,12 +19,11 @@ func (m *mizer) random(f string) error {
 	switch f {
 	case "int":
 		m.InitInt()
-	case "string":
+	case "str":
 		m.err = m.InitStr()
 	default:
-		m.err = nil
+		m.InitInt()
 	}
-
 	return nil
 }
 
@@ -36,5 +35,5 @@ func (m *mizer) setRange(r int) {
 	}
 }
 func (m *mizer) randomRange() {
-	m.r = 100
+	m.r = 10
 }
