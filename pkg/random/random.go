@@ -4,36 +4,41 @@ import ()
 
 type mizer struct {
 	param interface{}
-	r     int
-	err   error
+	i     int
 }
 
-func Randomizer(f string, r int) interface{} {
+func Randomizer(f string, r int) (interface{}, error) {
 	m := mizer{}
 	m.setRange(r)
-	m.random(f)
-	return m.param
+	err := m.random(f)
+	if err != nil {
+		return nil, err
+	}
+	return m.param, nil
 }
 
 func (m *mizer) random(f string) error {
+	var err error
 	switch f {
 	case "int":
 		m.InitInt()
+	case "rnum":
+		err = m.InitRnum()
 	case "str":
-		m.err = m.InitStr()
+		err = m.InitStr()
 	default:
 		m.InitInt()
 	}
-	return nil
+	return err
 }
 
 func (m *mizer) setRange(r int) {
 	if r == 0 {
 		m.randomRange()
 	} else {
-		m.r = r
+		m.i = r
 	}
 }
 func (m *mizer) randomRange() {
-	m.r = 10
+	m.i = 10
 }

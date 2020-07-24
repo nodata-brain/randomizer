@@ -12,6 +12,10 @@ func main() {
 	n := flag.Int("n", 0, "set range /n int n /n str word")
 	flag.Parse()
 
-	s := random.Randomizer(*str, *n)
+	s, err := random.Randomizer(*str, *n)
+	if err != nil {
+		fmt.Printf("error:%s", err)
+		return
+	}
 	fmt.Println(s)
 }
